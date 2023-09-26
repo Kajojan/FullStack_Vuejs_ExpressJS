@@ -12,7 +12,7 @@ export default {
   methods: {
     async login() {
       try {
-        await AuthenticationService.register({
+        await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
@@ -46,7 +46,7 @@ export default {
           <br />
           <div class="error" v-html="error" />
           <br />
-          <v-btn dark class="cyan" @click="register"> Login </v-btn>
+          <v-btn dark class="cyan" @click="login"> Login </v-btn>
         </div>
       </div>
     </v-flex>

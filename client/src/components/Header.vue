@@ -28,9 +28,7 @@
 export default {}
 </script>
 <style scoped>
-.unstyled-button {
-  text-decoration: none;
-}
+
 .router-link {
   text-decoration: none;
   color: inherit;
