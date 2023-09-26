@@ -10,7 +10,7 @@ export default {
     }
   },
   methods: {
-     async register () {
+    async register() {
       try {
         await AuthenticationService.register({
           email: this.email,
@@ -25,43 +25,54 @@ export default {
 </script>
 
 <template>
-<v-layout column>
-    <v-flex xs6 offset-xs3>
+  <v-layout column class="text-center">
+    <v-flex xs6 class="one">
       <div class="white elevation-2">
-        <v-toolbar flat dense class="cyan" dark>
+        <v-toolbar flat dense class="black" dark>
           <v-toolbar-title>Register</v-toolbar-title>
         </v-toolbar>
 
         <div class="pl-4 pr-4 pt-2 pb-2">
-      
-          <input 
-            type="email" 
-            name="email"
-            v-model="email"
-            placeholder="email" />
-          <br>
-          <input 
-            type="password" 
-            name="password"
-            v-model="password"
-            placeholder="password" />
-          <br>
+          <form name="tab-tracker-form" autocomplete="off">
+            <v-text-field label="Email" v-model="email"></v-text-field>
+            <br />
+            <v-text-field
+              label="Password"
+              type="password"
+              v-model="password"
+              autocomplete="new-password"
+            ></v-text-field>
+          </form>
+          <br />
           <div class="error" v-html="error" />
-          <br>
-          <v-btn
-            class="cyan"
-            @click="register">
-            Register
-          </v-btn>
+          <br />
+          <v-btn dark class="cyan" @click="register"> Register </v-btn>
         </div>
       </div>
     </v-flex>
   </v-layout>
 </template>
 
-
 <style scoped>
-.error { 
+.error {
   color: red;
+}
+form {
+  font-size: 20px;
+  width: 300px;
+}
+
+.one {
+  color: white;
+  background: gray;
+}
+.text-center {
+  color: white;
+  background: #181818;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 </style>
