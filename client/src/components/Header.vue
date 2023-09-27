@@ -14,11 +14,15 @@
     <v-spacer></v-spacer>
 
     <v-toolbar-items>
-      <v-btn flat dark class="unstyled-button">
-        <RouterLink to="login" class="router-link"> Login </RouterLink>
+      <v-btn flat dark class="unstyled-button" v-if="!$store.state.isUserLoggedIn" >
+        <RouterLink to="login" class="router-link" >
+          Login
+        </RouterLink>
       </v-btn>
-      <v-btn flat dark class="unstyled-button">
-        <RouterLink to="register" class="router-link"> Sign Up </RouterLink>
+      <v-btn flat dark class="unstyled-button" v-if="!$store.state.isUserLoggedIn">
+        <RouterLink to="register" class="router-link" >
+          Sign Up
+        </RouterLink>
       </v-btn>
     </v-toolbar-items>
   </v-toolbar>
@@ -28,7 +32,6 @@
 export default {}
 </script>
 <style scoped>
-
 .router-link {
   text-decoration: none;
   color: inherit;

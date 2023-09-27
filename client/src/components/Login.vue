@@ -12,10 +12,12 @@ export default {
   methods: {
     async login() {
       try {
-        await AuthenticationService.login({
+        const respone = await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
+        this.$store.dispatch('setToken', respone.data.token)
+        this.$store.dispatch('setUser', respone.data.user)
       } catch (error) {
         this.error = error.response.data.error
       }
@@ -65,7 +67,6 @@ form {
 .one {
   color: white;
   background: #363636;
-  
 }
 .text-center {
   color: white;
