@@ -19,4 +19,5 @@ import Header from '@/components/Header.vue'
 .v-layout {
   background-color: gray;
 }
+
 </style>
