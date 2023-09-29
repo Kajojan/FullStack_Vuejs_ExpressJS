@@ -1,5 +1,7 @@
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import Panel from '@/components/Panel.vue'
+
 
 export default {
   data() {
@@ -22,18 +24,15 @@ export default {
         this.error = error.response.data.error
       }
     }
-  }
+  },
+  components: {
+        Panel
+    }
 }
 </script>
 
 <template>
-  <v-layout column class="text-center">
-    <v-flex xs6 class="one">
-      <div class="white elevation-2">
-        <v-toolbar flat dense dark>
-          <v-toolbar-title class="text_title">Register</v-toolbar-title>
-        </v-toolbar>
-
+  <panel title="Register">
         <div class="pl-4 pr-4 pt-2 pb-2">
           <form name="tab-tracker-form" autocomplete="off">
             <v-text-field label="Email" v-model="email"></v-text-field>
@@ -50,9 +49,7 @@ export default {
           <br />
           <v-btn dark class="cyan" @click="register"> Register </v-btn>
         </div>
-      </div>
-    </v-flex>
-  </v-layout>
+  </panel>
 </template>
 
 <style scoped>
