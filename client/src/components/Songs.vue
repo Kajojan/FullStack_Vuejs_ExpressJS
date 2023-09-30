@@ -1,6 +1,6 @@
 <script>
 import Panel from '@/components/Panel.vue'
-import SongsService from "@/services/SongsService.js"
+import SongsService from '@/services/SongsService.js'
 
 export default {
   data() {
@@ -8,8 +8,8 @@ export default {
       songs: null
     }
   },
- async mounted(){
-    this.song = await SongsService.getAllSongs()
+  async mounted() {
+    this.songs = (await SongsService.getAllSongs()).data
   },
   components: {
     Panel
@@ -20,11 +20,11 @@ export default {
 <template>
   <v-layout column class="text-center">
     <v-flex xs6 class="one">
-      <panel title="Songs" >
-        <div v-for="song in songs" :key="song.title">
-             {{song.title}} 
-            {{ song.artist}}
-           {{  song.album }}
+      <panel title="Songs">
+        <div v-for="song in songs" :key="song.id">
+          {{ song.title }} -
+          {{ song.artist }} -
+          {{ song.album }}
         </div>
       </panel>
     </v-flex>

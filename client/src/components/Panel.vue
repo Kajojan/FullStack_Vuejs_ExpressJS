@@ -1,6 +1,6 @@
 <template>
   <v-layout column class="text-center">
-    <v-flex xs6 class="one">
+    <v-col cols="6" class="one">
       <div class="white elevation-2">
         <v-toolbar flat dense dark>
           <v-toolbar-title class="text_title">{{title}}</v-toolbar-title>
@@ -14,7 +14,7 @@
           
         </div>
       </div>
-    </v-flex>
+    </v-col>
   </v-layout>
 </template>
 
@@ -33,6 +33,8 @@ export default {
 .one {
   color: white;
   background: #363636;
+  width: 100%;
+
 }
 .text-center {
   color: white;
@@ -40,7 +42,6 @@ export default {
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  padding-top: 2%;
 }
 .text_title {
   margin-inline-start: 0 !important;

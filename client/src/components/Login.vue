@@ -31,6 +31,8 @@ export default {
 </script>
 
 <template>
+<v-layout column>
+    <v-col cols="6" offset="3">
      <panel title="Login">
         <div class="pl-4 pr-4 pt-2 pb-2">
           <form name="tab-tracker-form" autocomplete="off">
@@ -48,7 +50,10 @@ export default {
           <br />
           <v-btn dark class="cyan" @click="login"> Login </v-btn>
         </div>
+
     </panel>
+    </v-col>
+</v-layout>
 </template>
 
 <style scoped>
