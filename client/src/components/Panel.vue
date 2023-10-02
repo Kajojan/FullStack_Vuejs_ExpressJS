@@ -1,49 +1,35 @@
 <template>
-  <v-layout column class="text-center">
-    <v-col cols="6" class="one">
-      <div class="white elevation-2">
+
+      <div class="white elevation-2 & one">
         <v-toolbar flat dense dark>
-          <v-toolbar-title class="text_title">{{title}}</v-toolbar-title>
+          <v-toolbar-title class="text_title">{{ title }}</v-toolbar-title>
         </v-toolbar>
 
         <div class="pl-4 pr-4 pt-2 pb-2">
-        <slot>
-            No slot content defined
-        </slot> 
-
-          
+          <slot> No slot content defined </slot>
         </div>
       </div>
-    </v-col>
-  </v-layout>
+
 </template>
 
 <script>
 export default {
-    props:[
-        'title'
-    ]
-  }
-
- 
+  props: ['title']
+}
 </script>
 <style scoped>
-
-
 .one {
   color: white;
   background: #363636;
   width: 100%;
+  padding: 0;
+  
+}
 
-}
-.text-center {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-}
 .text_title {
   margin-inline-start: 0 !important;
+   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

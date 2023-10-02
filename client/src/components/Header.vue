@@ -6,23 +6,23 @@
 
     
         <v-toolbar-items>
-         <v-btn flat dark class="unstyled-button" v-if="!$store.state.isUserLoggedIn">
-        <RouterLink to="songs" class="router-link"> Browse </RouterLink>
+         <v-btn flat dark class="unstyled-button"  @click="navigateTo({name:'songs'})">
+         Browse
       </v-btn>
     </v-toolbar-items>
 
     <v-spacer></v-spacer>
 
     <v-toolbar-items>
-      <v-btn flat dark class="unstyled-button" v-if="!$store.state.isUserLoggedIn">
-        <RouterLink to="login" class="router-link"> Login </RouterLink>
+      <v-btn flat dark class="unstyled-button" v-if="!$store.state.isUserLoggedIn" @click="navigateTo({name:'login'})">
+        Login 
       </v-btn>
-      <v-btn flat dark class="unstyled-button" v-if="!$store.state.isUserLoggedIn">
-        <RouterLink to="register" class="router-link"> Sign Up </RouterLink>
+      <v-btn flat dark class="unstyled-button" v-if="!$store.state.isUserLoggedIn" @click="navigateTo({name:'register'})">
+        Sign Up 
       </v-btn>
 
       <v-btn flat dark v-if="$store.state.isUserLoggedIn" @click="logout">
-        <RouterLink to="/" class="router-link"> Log out </RouterLink>
+        Log out
       </v-btn>
     </v-toolbar-items>
   </v-toolbar>
@@ -37,7 +37,11 @@ export default {
       this.$router.push({
         name:'root'
       })
+    },
+      navigateTo (route) {
+      this.$router.push(route)
     }
+
   }
 }
 </script>

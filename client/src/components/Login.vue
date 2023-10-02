@@ -22,7 +22,8 @@ export default {
       } catch (error) {
         this.error = error.response.data.error
       }
-    }
+    },
+  
   },
   components: {
         Panel
@@ -61,8 +62,5 @@ export default {
   color: red;
 }
 
-form {
-  font-size: 20px;
-  width: 300px;
-}
+
 </style>
