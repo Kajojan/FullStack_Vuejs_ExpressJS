@@ -26,7 +26,7 @@ export default {
   <v-layout column>
     <v-col cols="6" class="one & mt-2" offset="3">
       <panel title="Songs">
-        <div class="button_grid">
+        <div class="button_grid mb-2 mt-2">
         <v-btn icon color="white" size="large" class="button" @click="navigateTo({name: 'songs-create'})">
           <v-icon x-large >mdi-plus</v-icon>
         </v-btn>
@@ -45,7 +45,7 @@ export default {
                 {{ song.genre }}
               </div>
 
-              <v-btn dark class="cyan"> View </v-btn>
+              <v-btn dark > View </v-btn>
             </v-col>
 
             <v-col cols="6">
