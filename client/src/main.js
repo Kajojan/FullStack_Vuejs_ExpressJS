@@ -10,6 +10,7 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import store from './stores/store'
 import '@mdi/font/css/materialdesignicons.css'
+import VueYtframe from "vue3-ytframe"
 
 const vuetify = createVuetify({
   components,
@@ -21,6 +22,7 @@ app.use(vuetify)
 app.use(createPinia())
 app.use(router)
 app.use(store)
+app.use(VueYtframe)
 
 sync(store, router)
 
