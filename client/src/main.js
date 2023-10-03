@@ -22,7 +22,7 @@ app.use(createPinia())
 app.use(router)
 app.use(store)
 
-// sync(store, router)
+sync(store, router)
 
 
 app.mount('#app')

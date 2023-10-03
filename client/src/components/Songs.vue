@@ -45,7 +45,12 @@ export default {
                 {{ song.genre }}
               </div>
 
-              <v-btn dark > View </v-btn>
+      <v-btn dark class="mt-2" @click="navigateTo({
+                  name: 'song', 
+                  params: {
+                    songId: song.id
+                  }
+                })">  View </v-btn>
             </v-col>
 
             <v-col cols="6">
