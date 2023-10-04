@@ -1,10 +1,10 @@
 <template>
   <v-toolbar fixed class="cyan" dark>
-    <v-toolbar-title class="mr-4">
+    <v-toolbar-title class="title">
       <RouterLink to="/" class="router-link"> TabTracker</RouterLink>
-    </v-toolbar-title>
 
     
+    </v-toolbar-title>
         <v-toolbar-items>
          <v-btn flat dark class="unstyled-button" v-if="!$store.state.isUserLoggedIn" @click="navigateTo({name:'songs'})">
          Browse
@@ -46,6 +46,11 @@ export default {
 }
 </script>
 <style scoped>
+
+.title{
+  max-width: fit-content;
+}
+
 .router-link {
   text-decoration: none;
   color: inherit;
