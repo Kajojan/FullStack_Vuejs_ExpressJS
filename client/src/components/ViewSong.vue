@@ -14,8 +14,22 @@
             <div class="song-genre">
               {{ song.genre }}
             </div>
-          </v-col>
 
+            <v-btn
+              dark
+              class="mt-2"
+              @click="
+                navigateTo({
+                  name: 'edit',
+                  params:{
+                    songId:songId
+                  }
+                })
+              "
+            >
+              Edit
+            </v-btn>
+          </v-col>
           <v-col cols="6">
             <img class="album-image" :src="song.albumImageUrl" />
             <div>{{ song.album }}</div>
@@ -43,6 +57,11 @@ import SongsService from '@/services/SongsService.js'
 import Panel from '@/components/Panel.vue'
 
 export default {
+    methods: {
+     navigateTo (route) {
+      this.$router.push(route)
+    }
+  },
   data() {
     return {
       song: {}
