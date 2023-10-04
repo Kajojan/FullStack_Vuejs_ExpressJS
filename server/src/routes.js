@@ -13,4 +13,6 @@ module.exports = (app) => {
   app.get("/songs", SongsController.getAllSong);
   app.post("/songs", SongsController.postNewSong);
   app.get("/songs/:songId", SongsController.show);
+  app.put("/songs/edit/:songId", SongsController.edit);
+
 };
