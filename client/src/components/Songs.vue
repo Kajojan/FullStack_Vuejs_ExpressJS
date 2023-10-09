@@ -1,10 +1,11 @@
 <script>
 import Panel from '@/components/Panel.vue'
 import SongsService from '@/services/SongsService.js'
+import SongSearchPanelVue from './SongSearchPanel.vue'
 
 export default {
   methods: {
-     navigateTo (route) {
+    navigateTo(route) {
       this.$router.push(route)
     }
   },
@@ -17,19 +18,36 @@ export default {
     this.songs = (await SongsService.getAllSongs()).data
   },
   components: {
-    Panel
+    Panel,
+    SongSearchPanelVue
+  },
+  watch:{
+    '$route.query.search': {
+      immediate: true,
+      async handler (value) {
+        this.song = await SongsService.getAllSongs(value);
+      }
+  }
   }
 }
 </script>
 
 <template>
   <v-layout column>
-    <v-col cols="6" class="one & mt-2" offset="3">
+    <v-col cols="6" class="one" offset="3">
+      <SongSearchPanelVue />
+
       <panel title="Songs">
         <div class="button_grid mb-2 mt-2">
-        <v-btn icon color="white" size="large" class="button" @click="navigateTo({name: 'songs-create'})">
-          <v-icon x-large >mdi-plus</v-icon>
-        </v-btn>
+          <v-btn
+            icon
+            color="white"
+            size="large"
+            class="button"
+            @click="navigateTo({ name: 'songs-create' })"
+          >
+            <v-icon x-large>mdi-plus</v-icon>
+          </v-btn>
         </div>
 
         <div v-for="song in songs" :key="song.id">
@@ -45,12 +63,20 @@ export default {
                 {{ song.genre }}
               </div>
 
-      <v-btn dark class="mt-2" @click="navigateTo({
-                  name: 'song', 
-                  params: {
-                    songId: song.id
-                  }
-                })">  View </v-btn>
+              <v-btn
+                dark
+                class="mt-2"
+                @click="
+                  navigateTo({
+                    name: 'song',
+                    params: {
+                      songId: song.id
+                    }
+                  })
+                "
+              >
+                View
+              </v-btn>
             </v-col>
 
             <v-col cols="6">
@@ -68,15 +94,15 @@ export default {
   color: red;
 }
 
-.button_grid{
+.button_grid {
   display: grid;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
 }
 .one {
   color: white;
-  background: #363636;
   padding: 0;
+  margin-top: 16px !important;
 }
 
 .song {
