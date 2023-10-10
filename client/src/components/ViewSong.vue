@@ -20,9 +20,11 @@
               class="mt-2"
               :to="{
                 name: 'edit',
-                params: {
-                  songId: songId
-                }
+                params:
+                   {
+                    songId: song.id
+                  }
+                
               }"
             >
               Edit

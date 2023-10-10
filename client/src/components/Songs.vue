@@ -55,12 +55,13 @@ export default {
               <v-btn
                 dark
                 class="mt-2"
-                :to="{
-                  name: 'song',
-                  params: {
-                    songId: song.id
+               :to="{
+                    name: 'song',
+                    params: {
+                      songId: song.id
+                    }
                   }
-                }"
+                "
               >
                 View
               </v-btn>

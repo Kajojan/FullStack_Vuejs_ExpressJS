@@ -9,7 +9,9 @@
         dark
         class="unstyled-button"
         v-if="!$store.state.isUserLoggedIn"
-        :to="{name:'songs'}"
+        :to="{
+          name: 'songs'
+        }"
       >
         Browse
       </v-btn>
@@ -32,7 +34,7 @@
         dark
         class="unstyled-button"
         v-if="!$store.state.isUserLoggedIn"
-        :to="{name:'register'}"
+        :to="{ name: 'register' }"
       >
         Sign Up
       </v-btn>
@@ -51,8 +53,7 @@ export default {
       this.$router.push({
         name: 'root'
       })
-    },
-    
+    }
   }
 }
 </script>
