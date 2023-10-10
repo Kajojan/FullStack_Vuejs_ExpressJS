@@ -1,29 +1,43 @@
 <template>
   <v-toolbar fixed class="cyan" dark>
     <v-toolbar-title class="title">
-      <RouterLink to="/" class="router-link"> TabTracker</RouterLink>
-
-    
+      <RouterLink :to="{ name: 'root' }" class="router-link"> TabTracker</RouterLink>
     </v-toolbar-title>
-        <v-toolbar-items>
-         <v-btn flat dark class="unstyled-button" v-if="!$store.state.isUserLoggedIn" @click="navigateTo({name:'songs'})">
-         Browse
+    <v-toolbar-items>
+      <v-btn
+        flat
+        dark
+        class="unstyled-button"
+        v-if="!$store.state.isUserLoggedIn"
+        :to="{name:'songs'}"
+      >
+        Browse
       </v-btn>
     </v-toolbar-items>
 
     <v-spacer></v-spacer>
 
     <v-toolbar-items>
-      <v-btn flat dark class="unstyled-button" v-if="!$store.state.isUserLoggedIn" @click="navigateTo({name:'login'})">
-        Login 
+      <v-btn
+        flat
+        dark
+        class="unstyled-button"
+        v-if="!$store.state.isUserLoggedIn"
+        :to="{ name: 'login' }"
+      >
+        Login
       </v-btn>
-      <v-btn flat dark class="unstyled-button" v-if="!$store.state.isUserLoggedIn" @click="navigateTo({name:'register'})">
-        Sign Up 
+      <v-btn
+        flat
+        dark
+        class="unstyled-button"
+        v-if="!$store.state.isUserLoggedIn"
+        :to="{name:'register'}"
+      >
+        Sign Up
       </v-btn>
 
-      <v-btn flat dark v-if="$store.state.isUserLoggedIn" @click="logout">
-        Log out
-      </v-btn>
+      <v-btn flat dark v-if="$store.state.isUserLoggedIn" @click="logout"> Log out </v-btn>
     </v-toolbar-items>
   </v-toolbar>
 </template>
@@ -35,19 +49,15 @@ export default {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
       this.$router.push({
-        name:'root'
+        name: 'root'
       })
     },
-      navigateTo (route) {
-      this.$router.push(route)
-    }
-
+    
   }
 }
 </script>
 <style scoped>
-
-.title{
+.title {
   max-width: fit-content;
 }
 

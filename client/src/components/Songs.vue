@@ -4,11 +4,6 @@ import SongsService from '@/services/SongsService.js'
 import SongSearchPanelVue from './SongSearchPanel.vue'
 
 export default {
-  methods: {
-    navigateTo(route) {
-      this.$router.push(route)
-    }
-  },
   data() {
     return {
       songs: null
@@ -21,13 +16,13 @@ export default {
     Panel,
     SongSearchPanelVue
   },
-  watch:{
+  watch: {
     '$route.query.search': {
       immediate: true,
-      async handler (value) {
-        this.song = await SongsService.getAllSongs(value);
+      async handler(value) {
+        this.song = await SongsService.getAllSongs(value)
       }
-  }
+    }
   }
 }
 </script>
@@ -39,13 +34,7 @@ export default {
 
       <panel title="Songs">
         <div class="button_grid mb-2 mt-2">
-          <v-btn
-            icon
-            color="white"
-            size="large"
-            class="button"
-            @click="navigateTo({ name: 'songs-create' })"
-          >
+          <v-btn icon color="white" size="large" class="button" :to="{ name: 'songs-create' }">
             <v-icon x-large>mdi-plus</v-icon>
           </v-btn>
         </div>
@@ -66,14 +55,12 @@ export default {
               <v-btn
                 dark
                 class="mt-2"
-                @click="
-                  navigateTo({
-                    name: 'song',
-                    params: {
-                      songId: song.id
-                    }
-                  })
-                "
+                :to="{
+                  name: 'song',
+                  params: {
+                    songId: song.id
+                  }
+                }"
               >
                 View
               </v-btn>

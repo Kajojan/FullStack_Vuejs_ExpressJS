@@ -18,14 +18,12 @@
             <v-btn
               dark
               class="mt-2"
-              @click="
-                navigateTo({
-                  name: 'edit',
-                  params:{
-                    songId:songId
-                  }
-                })
-              "
+              :to="{
+                name: 'edit',
+                params: {
+                  songId: songId
+                }
+              }"
             >
               Edit
             </v-btn>
@@ -57,11 +55,6 @@ import SongsService from '@/services/SongsService.js'
 import Panel from '@/components/Panel.vue'
 
 export default {
-    methods: {
-     navigateTo (route) {
-      this.$router.push(route)
-    }
-  },
   data() {
     return {
       song: {}
