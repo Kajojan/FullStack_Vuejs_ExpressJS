@@ -8,7 +8,7 @@
         flat
         dark
         class="unstyled-button"
-        v-if="!$store.state.isUserLoggedIn"
+        v-if="$store.state.isUserLoggedIn"
         :to="{
           name: 'songs'
         }"

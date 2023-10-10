@@ -20,6 +20,9 @@ export default {
         })
         this.$store.dispatch('setToken', respone.data.token)
         this.$store.dispatch('setUser', respone.data.user)
+        this.$router.push({
+          name:'songs'
+        })
       } catch (error) {
         this.error = error.response.data.error
       }
