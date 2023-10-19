@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     lyrics: DataTypes.TEXT,
     tab: DataTypes.TEXT,
   });
+  
+  Song.associate = function (models) {
+  }
 
   return Song;
 };
