@@ -20,14 +20,30 @@
               class="mt-2"
               :to="{
                 name: 'edit',
-                params:
-                   {
-                    songId: song.id
-                  }
-                
+                params: {
+                  songId: song.id
+                }
               }"
             >
               Edit
+            </v-btn>
+
+            <v-btn
+              dark
+              v-if="this.$store.state.isUserLoggedIn && !bookmark"
+              class="mt-2 ml-2"
+              @click="setAsBookmark"
+            >
+              Bookmark
+            </v-btn>
+
+            <v-btn
+              dark
+              v-if="this.$store.state.isUserLoggedIn && bookmark"
+              class="mt-2 ml-2"
+              @click="unsetAsBookmark"
+            >
+              Unbookmark
             </v-btn>
           </v-col>
           <v-col cols="6">
@@ -55,20 +71,64 @@
 <script>
 import SongsService from '@/services/SongsService.js'
 import Panel from '@/components/Panel.vue'
+import BookmarksService from '@/services/BookmarksService.js'
 
 export default {
   data() {
     return {
-      song: {}
+      song: {},
+      bookmark: null
     }
   },
   async mounted() {
     const songsId = this.$store.state.route.params.songId
     this.song = (await SongsService.show(songsId)).data
+    console.log(this.song);
   },
 
   components: {
     Panel
+  },
+  watch: {
+    async song(value) {
+      if (!this.$store.state.isUserLoggedIn) {
+        console.log(this.$store.state.isUserLoggedIn);
+        return
+      }
+      try {
+        const query = {
+          songId: this.song.id,
+          userId: this.$store.state.user.id
+        }
+        this.bookmark = (await BookmarksService.index(query)).data
+        console.log(this.bookmark)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  },
+
+  methods: {
+    async setAsBookmark() {
+      try {
+        const bookmark = {
+          songId: this.song.id,
+          userId: this.$store.state.user.id
+        }
+        this.bookmark = (await BookmarksService.post(bookmark)).data
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    async unsetAsBookmark() {
+      console.log(this.bookmark)
+      try {
+        await BookmarksService.delete(this.bookmark.id)
+        this.bookmark = null
+      } catch (err) {
+        console.log(err)
+      }
+    }
   }
 }
 </script>
