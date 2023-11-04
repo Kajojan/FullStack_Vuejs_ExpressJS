@@ -100,8 +100,9 @@ export default {
           songId: this.song.id,
           userId: this.$store.state.user.id
         }
-        this.bookmark = (await BookmarksService.index(query)).data
-        console.log(this.bookmark)
+        const bookmark = (await BookmarksService.index(query)).data
+        bookmark.length ? this.bookmark=bookmark[0]: null
+        console.log('bookmark ', this.bookmark);
       } catch (err) {
         console.log(err)
       }

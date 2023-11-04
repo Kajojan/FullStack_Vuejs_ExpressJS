@@ -2,6 +2,7 @@
 import Panel from '@/components/Panel.vue'
 import SongsService from '@/services/SongsService.js'
 import SongSearchPanelVue from './SongSearchPanel.vue'
+import SongBookmarks from '@/components/SongsBookmarks.vue'
 
 export default {
   data() {
@@ -14,7 +15,8 @@ export default {
   },
   components: {
     Panel,
-    SongSearchPanelVue
+    SongSearchPanelVue,
+    SongBookmarks,
   },
   watch: {
     '$route.query.search': {
@@ -29,9 +31,11 @@ export default {
 
 <template>
   <v-layout column>
-    <v-col cols="6" class="one" offset="3">
+    <v-col  cols="3">
+      <SongBookmarks/>
+    </v-col>
+    <v-col cols="6" class="one" offset="2">
       <SongSearchPanelVue />
-
       <panel title="Songs">
         <div class="button_grid mb-2 mt-2">
           <v-btn icon color="white" size="large" class="button" :to="{ name: 'songs-create' }">
