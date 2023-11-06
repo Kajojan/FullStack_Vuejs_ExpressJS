@@ -3,6 +3,7 @@ import Panel from '@/components/Panel.vue'
 import SongsService from '@/services/SongsService.js'
 import SongSearchPanelVue from './SongSearchPanel.vue'
 import SongBookmarks from '@/components/SongsBookmarks.vue'
+import RecentlyViewedSong from '@/components/RecentlyViewedSong.vue'
 
 export default {
   data() {
@@ -12,11 +13,14 @@ export default {
   },
   async mounted() {
     this.songs = (await SongsService.getAllSongs()).data
+
+    
   },
   components: {
     Panel,
     SongSearchPanelVue,
     SongBookmarks,
+    RecentlyViewedSong
   },
   watch: {
     '$route.query.search': {
@@ -33,6 +37,7 @@ export default {
   <v-layout column>
     <v-col  cols="3">
       <SongBookmarks/>
+      <RecentlyViewedSong/>
     </v-col>
     <v-col cols="6" class="one" offset="2">
       <SongSearchPanelVue />
