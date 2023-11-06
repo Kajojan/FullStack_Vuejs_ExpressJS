@@ -5,7 +5,6 @@ module.exports = {
   async index(req, res) {
     try {
       const { songId, userId } = req.query;
-      console.log(req.query);
       const where = {
         UserId: userId,
       };
@@ -18,7 +17,6 @@ module.exports = {
       })
       bookmark.map((bookmark) => bookmark.toJSON())
       .map((bookmark) => _.extend({}, bookmark.Song, bookmark));
-      console.log('bookmarks: ' , bookmark);
 
       res.send(bookmark);
     } catch (err) {
