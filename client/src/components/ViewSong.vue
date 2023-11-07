@@ -92,7 +92,6 @@ export default {
     if (this.isUserLoggedIn) {
       SongHistoryService.post({
         songId: songsId,
-        userId: this.user.id
       })
     }
   },
@@ -109,7 +108,6 @@ export default {
       try {
         const query = {
           songId: this.song.id,
-          userId: this.$store.state.user.id
         }
         const bookmark = (await BookmarksService.index(query)).data
         bookmark.length ? (this.bookmark = bookmark[0]) : null
@@ -125,7 +123,6 @@ export default {
       try {
         const bookmark = {
           songId: this.song.id,
-          userId: this.$store.state.user.id
         }
         this.bookmark = (await BookmarksService.post(bookmark)).data
       } catch (err) {
